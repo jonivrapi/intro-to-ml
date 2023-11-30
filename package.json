@@ -1,0 +1,14 @@
+{
+	"name": "intro-to-ml",
+	"version": "1.0.0",
+	"description": "A repo to hold notes about my ML learnings",
+	"main": "index.js",
+	"scripts": {
+		"start": "retype start"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"retypeapp": "^3.5.0"
+	}
+}
