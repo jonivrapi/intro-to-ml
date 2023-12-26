@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-root" content="/intro-to-ml">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.756939031464">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Common Terminology</title>
+    <meta name="title" content="Common Terminology">
+    <meta name="description" content="The training dataset is the part of the overall dataset that is used to train the model. It contains the input data, its labels, and the target values.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-machine-learning/vocabulary/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-machine-learning/vocabulary/">
+    <meta property="og:title" content="Common Terminology">
+    <meta property="og:description" content="The training dataset is the part of the overall dataset that is used to train the model. It contains the input data, its labels, and the target values.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-machine-learning/vocabulary/">
+    <meta property="twitter:title" content="Common Terminology">
+    <meta property="twitter:description" content="The training dataset is the part of the overall dataset that is used to train the model. It contains the input data, its labels, and the target values.">
+
+    <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../resources/css/retype.css?v=3.5.0.756939031464" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.756939031464" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.756939031464" data-turbo-eval="false" defer></script>
+    <link href="../../resources/css/katex.css?v=3.5.0" rel="stylesheet">
+    <script id="katex-js" data-cfasync="false" src="../../resources/js/katex.js?v=3.5.0" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">ML</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-gray-400 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 dark:placeholder-dark-400" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="common-terminology" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#common-terminology">#</doc-anchor-trigger>
+        <span>Common Terminology</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="training-dataset">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#training-dataset">#</doc-anchor-trigger>
+        <span>Training Dataset</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>training dataset</strong> is the part of the overall dataset that is used to train the model. It contains the input data, its labels, and the target values.</p>
+<doc-anchor-target id="testing-dataset">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#testing-dataset">#</doc-anchor-trigger>
+        <span>Testing Dataset</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>testing dataset</strong> is the part of the overall dataset that is used to test the performance of the trained model. This involves using data not seen by the model during training to make predictions and then comparing those predictions to the correct labels.</p>
+<doc-anchor-target id="validation-dataset">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#validation-dataset">#</doc-anchor-trigger>
+        <span>Validation Dataset</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>validation dataset</strong> is the part of the overall dataset that is used to fine-tune the model&#x27;s hyperparameters, select between multiple models or model configurations, as well as to prevent overfitting. You can also use this portion of the dataset to evaluate the model&#x27;s performance during training.</p>
+<p><figure class="content-center">
+    <img src="../images/train-test-split.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="ground-truth">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ground-truth">#</doc-anchor-trigger>
+        <span>Ground Truth</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Ground truth</strong> refers to the actual labels or target values of the dataset, used to compare the model&#x27;s predictions to the correct answers and evaluate prediction accuracy.</p>
+<doc-anchor-target id="labeltarget">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#labeltarget">#</doc-anchor-trigger>
+        <span>Label/Target</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>label</strong> or <strong>target</strong> is the value that the model is predicting.</p>
+<doc-anchor-target id="pre-processing">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pre-processing">#</doc-anchor-trigger>
+        <span>Pre-processing</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Pre-processing</strong> involves preparing the data for model training. This step is crucial for shaping the data into a suitable format, especially when using non-ML-specific datasets.</p>
+<doc-anchor-target id="feature">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#feature">#</doc-anchor-trigger>
+        <span>Feature</span>
+    </h3>
+</doc-anchor-target>
+<p>A <strong>feature</strong> is an input to the machine learning algorithm. This is typically a column in a 2D dataset.</p>
+<doc-anchor-target id="data-point">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data-point">#</doc-anchor-trigger>
+        <span>Data point</span>
+    </h3>
+</doc-anchor-target>
+<p>A <strong>data point</strong> is a collection of features that represents a full input to a model. This is typically a row in a 2D dataset.</p>
+<doc-anchor-target id="numerical">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#numerical">#</doc-anchor-trigger>
+        <span>Numerical</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Numerical</strong> data points can be counted (e.g., quantitative data like horsepower in a car, or weight in a person).</p>
+<doc-anchor-target id="nominal">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#nominal">#</doc-anchor-trigger>
+        <span>Nominal</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Nominal</strong> data points cannot be counted (e.g., qualitative data like color).</p>
+<p><figure class="content-center">
+    <img src="../images/dataset-example.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In the example dataset above, <strong>total_bill</strong>, <strong>tip</strong> and <strong>size</strong> are numerical features, while <strong>sex</strong>, <strong>smoker</strong>, <strong>day</strong>, and <strong>time</strong> are nominal features. Row <strong>0</strong> is a data point. Your target, however, will change depending on what you want to predict. If you wanted to create a model which predicted how much a person would tip based on the data above, <strong>tip</strong> would be your <strong>target</strong>.</p>
+<doc-anchor-target id="decision-surface">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#decision-surface">#</doc-anchor-trigger>
+        <span>Decision Surface</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>decision surface</strong> in a classification model is the boundary that distinguishes between different classes. It&#x27;s the separator between the orange and blue sections in this graph. Some classification models learn to distinguish between classes by drawing a hyperplane (that line, but in &gt;2 dimensional space) to separate out different classes. These models then use these hyperplanes to make predictions about which data points belong to which classes.</p>
+<p><figure class="content-center">
+    <img src="../images/decision-surface.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="model-validation">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#model-validation">#</doc-anchor-trigger>
+        <span>Model Validation</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Model validation</strong> assesses a trained model&#x27;s performance on unseen data, using metrics like accuracy, f1 score, recall, etc.</p>
+<doc-anchor-target id="true-positives-tp">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#true-positives-tp">#</doc-anchor-trigger>
+        <span>True Positives (TP)</span>
+    </h3>
+</doc-anchor-target>
+<p>The instances correctly predicted as positive.</p>
+<doc-anchor-target id="true-negatives-tn">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#true-negatives-tn">#</doc-anchor-trigger>
+        <span>True Negatives (TN)</span>
+    </h3>
+</doc-anchor-target>
+<p>The instances correctly predicted as negative.</p>
+<doc-anchor-target id="false-positives-fp">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#false-positives-fp">#</doc-anchor-trigger>
+        <span>False Positives (FP)</span>
+    </h3>
+</doc-anchor-target>
+<p>The instances incorrectly predicted as positive.</p>
+<doc-anchor-target id="false-negatives-fn">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#false-negatives-fn">#</doc-anchor-trigger>
+        <span>False Negatives (FN)</span>
+    </h3>
+</doc-anchor-target>
+<p>The instances incorrectly predicted as negative.</p>
+<doc-anchor-target id="error-err">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#error-err">#</doc-anchor-trigger>
+        <span>Error (ERR)</span>
+    </h3>
+</doc-anchor-target>
+<p>Shows you how often the model gets a prediction wrong.</p>
+<div class="math"><pre>    \text{ERR} = \frac{\text{FP} + \text{FN}}{\text{FP} + \text{FN} + \text{TP} + \text{TN}} = 1 - \text{ACC}</pre></div>
+<doc-anchor-target id="accuracy-acc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#accuracy-acc">#</doc-anchor-trigger>
+        <span>Accuracy (ACC)</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Accuracy</strong> represents the proportion of correctly predicted items to the total number of predictions made.</p>
+<div class="math"><pre>    \text{ACC} = \frac{\text{TP} + \text{TN}}{\text{FP} + \text{FN} + \text{TP} + \text{TN}} = 1 - \text{ERR}</pre></div>
+<doc-anchor-target id="precision-pre">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#precision-pre">#</doc-anchor-trigger>
+        <span>Precision (PRE)</span>
+    </h3>
+</doc-anchor-target>
+<p>The ratio of true positive predictions to the total number of positive predictions (including both true positives and false positives). It answers the question, &quot;Of all instances classified as positive, how many are actually positive?&quot;</p>
+<div class="math"><pre>    \text{PRE} = \frac{\text{TP}}{\text{TP} + \text{FP}}</pre></div>
+<doc-anchor-target id="recall-rec">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#recall-rec">#</doc-anchor-trigger>
+        <span>Recall (REC)</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="sensitivitytrue-positive-rate">
+    <h5>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sensitivitytrue-positive-rate">#</doc-anchor-trigger>
+        <span>(Sensitivity/True Positive Rate)</span>
+    </h5>
+</doc-anchor-target>
+<p>The ratio of true positive predictions to the total number of actual positive instances (including both true positives and false negatives). It answers the question, &quot;Of all actual positive instances, how many are correctly classified by the model?&quot;</p>
+<div class="math"><pre>    \text{REC} = \frac{\text{TP}}{\text{TP} + \text{FN}}</pre></div>
+<doc-anchor-target id="true-negative-rate-tnr">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#true-negative-rate-tnr">#</doc-anchor-trigger>
+        <span>True Negative Rate (TNR)</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="specificity">
+    <h5>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#specificity">#</doc-anchor-trigger>
+        <span>(Specificity)</span>
+    </h5>
+</doc-anchor-target>
+<p>This is the proportion of true negatives out of the total number of negatives. It aims to tell you the same thing recall tells you about true positives, but about true negatives. This would be useful in a situation where false positives have a significant cost, such as a system which tries to identify nuclear attacks. It is calculated as:</p>
+<div class="math"><pre>    \text{REC} = \frac{\text{TN}}{\text{TN} + \text{FP}}</pre></div>
+<doc-anchor-target id="f1-score">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#f1-score">#</doc-anchor-trigger>
+        <span>F1 Score</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>F1 score</strong> is a statistical measure which balances the trade-off between precision and recall. It is particularly useful in scenarios where an equal importance is given to both false positives and false negatives, or when dealing with <em>imbalanced datasets</em>. The F1 score is the harmonic mean of precision and recall, providing a single metric that accounts for both the false positives and false negatives in the model&#x27;s predictions.</p>
+<div class="math"><pre>    \text{F1} = 2*\frac{\text{PRE} \times \text{REC}}{\text{PRE} + \text{REC}}</pre></div>
+<doc-anchor-target id="receiver-operating-characteristic">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#receiver-operating-characteristic">#</doc-anchor-trigger>
+        <span>Receiver Operating Characteristic</span>
+    </h3>
+</doc-anchor-target>
+<p>This is the ratio of the TPR to the FPR. It is typically represented as a curve with TPR plotted on the y-axis and FPR plotted on the x-axis. A model that classifies things at random will show up as a diagonal line across this plot. A good classifier will hug the top left portion of the graph, indicating that it has a high true positive rate, and a low false positive rate. Likewise, a poor curve will be the inverse of this with a high false positive rate, and a low true positive rate. It is calculated as:</p>
+<div class="math"><pre>    \text{ROC} = \frac{\text{TPR}}{\text{FPR}}</pre></div>
+<doc-anchor-target id="auc">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#auc">#</doc-anchor-trigger>
+        <span>AUC</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="area-under-the-receiver-operating-characteristic-curve">
+    <h5>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#area-under-the-receiver-operating-characteristic-curve">#</doc-anchor-trigger>
+        <span>(Area under the [Receiver Operating Characteristic] curve)</span>
+    </h5>
+</doc-anchor-target>
+<p>This is a quantitative measurement of the overall performance of the classifier using the ROC curve. It boils the ROC curve down to a single value. A higher value here will indicate a better classifier. This would be calculated, in theory, as the definite integral of the ROC curve, however numerically it is approximated using a Reimann sum typically implemented as the trapezoidal rule.</p>
+<div class="math"><pre>    \text{AUC} = \int_{x=0}^{1} \text{TPR}(x) \, dx</pre></div>
+<doc-anchor-target id="cross-validation">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cross-validation">#</doc-anchor-trigger>
+        <span>Cross-validation</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Cross-validation</strong> is a technique for estimating a model&#x27;s generalizability to new data. It involves testing the model against subsets of data withheld from the training set in order to collect statistics which can then ve averaged to produce a more realistic assessment of the model&#x27;s overall performance.</p>
+<p><figure class="content-center">
+    <img src="../images/dataset-example.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="hyperparameters">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hyperparameters">#</doc-anchor-trigger>
+        <span>Hyperparameters</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Hyperparameters</strong> are the adjustable settings of a model, like learning rate or gamma, which are tuned between training runs to enhance performance.</p>
+<doc-anchor-target id="overfitting">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#overfitting">#</doc-anchor-trigger>
+        <span>Overfitting</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Overfitting</strong> occurs when a model is trained to perfectly (or too closely) fit the training data, to the detriment of its performance on new, unseen data.</p>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../fundamentals-of-machine-learning/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Fundamentals of Machine Learning</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Common Terminology", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: true, tocDepth: 23 }</script>
+</body>
+</html>
