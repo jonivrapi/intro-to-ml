@@ -146,7 +146,7 @@ $$
 
 **Cross-validation** is a technique for estimating a model's generalizability to new data. It involves testing the model against subsets of data withheld from the training set in order to collect statistics which can then ve averaged to produce a more realistic assessment of the model's overall performance.
 
-![](images/dataset-example.jpg)
+![](images/k-fold-cross-val.png)
 
 ### Hyperparameters
 
