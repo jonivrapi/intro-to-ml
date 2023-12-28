@@ -1,3 +1,8 @@
+---
+order: 100
+label: Intro to ML
+---
+
 # Introduction to Machine Learning
 
 ## What is Machine Learning?
