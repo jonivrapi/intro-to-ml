@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/intro-to-ml">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.757891298217">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.757892373469">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.757891298217" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.757892373469" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.757891298217" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.757892373469" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.757891298217" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.757892373469" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.757892373469" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -171,23 +172,50 @@
     </h1>
 </doc-anchor-target>
 <p>We will be working with the <code v-pre>Iris Dataset</code> -- typically used as the <code v-pre>Hello world!</code> of machine learning projects. This dataset can be found in the <code v-pre>sklearn datasets</code>. You can find the jupyter notebook for this assignment [here].</p>
-<p>Questions to answer:</p>
-<ol>
-<li>How many data points are there in this dataset?</li>
-<li>How many columns (features)?</li>
-<li>What are the datatypes of each feature?</li>
-<li>What is the target feature name?</li>
-<li>How many target categories are there?</li>
-</ol>
-<p>Things to do:</p>
-<ol>
-<li>Create a correlation matrix for the features in this dataset.</li>
-<li>Create a pairwise plot of all the features for this dataset.</li>
-<li>After creating these, speculate as to which features would be most useful for classification.</li>
-<li>Set up your train-test-split for training your models.</li>
-<li>Train a Decision Tree, Support Vector Machine (SVM), Naieve Bayes (NB), and Multi-layer Perceptron (MLP) on the training set.</li>
-<li>Report each of their classification accuracies.</li>
-</ol>
+<p><strong>Question 1:</strong> How many datapoints are in this dataset?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p><strong>Question 2:</strong> How many columns (features) are there?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p><strong>Question 3:</strong> What are the datatypes of each feature?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p><strong>Question 4:</strong> What is the target feature name?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p><strong>Question 5:</strong> How many target categories are there?</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p>Create a correlation matrix for the features in this dataset.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p>Create a pairwise plot of all the features in this dataset.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p>Speculate as to which features would be most useful for classification based on the above two plots.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p>Set up your training and testing datasets.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p>Train decision tree, SVM, NB and MLP classifiers.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
+<p>Report classification accuracies.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python"></code></pre>
+</doc-codeblock></div>
 
                                 
                                 <!-- Required only on API pages -->
@@ -247,6 +275,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Assignment 1", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Assignment 1", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
