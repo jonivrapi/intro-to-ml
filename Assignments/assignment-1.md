@@ -1,6 +1,6 @@
 # Assignment 1
 
-We will be working with the `Iris Dataset` -- typically used as the `Hello world!` of machine learning projects. This dataset can be found in the `sklearn datasets`. You can find the jupyter notebook for this assignment [here].
+We will be working with the `Iris Dataset` -- typically used as the `Hello world!` of machine learning projects. This dataset can be found in the `sklearn datasets`. You can find the jupyter notebook for this assignment [here](https://github.com/jonivrapi/intro-to-ml/blob/main/Assignments/Assignment-1.ipynb). Find the completed assignment [here](https://github.com/jonivrapi/intro-to-ml/blob/main/Assignments/Assignment-1-complete.ipynb).
 
 **Question 1:** How many datapoints are in this dataset?
 
