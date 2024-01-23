@@ -159,3 +159,7 @@ $$
 ### Overfitting
 
 **Overfitting** occurs when a model is trained to perfectly (or too closely) fit the training data, to the detriment of its performance on new, unseen data.
+
+### Regularization
+
+**Regularization** is when you constrain a model to make it simpler in order to reduce the risk of overfitting to the dataset.
