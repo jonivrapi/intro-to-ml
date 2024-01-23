@@ -1,5 +1,5 @@
 ---
-order: 98
+order: 97
 label: Math Concepts
 ---
 
@@ -28,7 +28,7 @@ The mode is the most frequently occurring value in a data set.
 Standard deviation measures the amount of variation or dispersion in a set of values.
 
 $$
-    \sigma = \sqrt{\frac{1}{N} \sum\_{i=1}^{N} (x_i - \mu)^2}
+    \sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2}
 $$
 
 Where $\mu$ is the mean.
@@ -67,9 +67,9 @@ Where $\bar{x}$ and $\bar{y}$ are the means of the two variables. A score of $1$
 
 Covariance indicates the direction of the linear relationship between variables.
 
-For a **population**: $$ \text{Cov}(x, y) = \frac{1}{N} \sum\_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y}) $$
+For a **population**: $$ \text{Cov}(x, y) = \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y}) $$
 
-For a **sample**: $$ \text{Cov}(x, y) = \frac{1}{N-1} \sum\_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y}) $$
+For a **sample**: $$ \text{Cov}(x, y) = \frac{1}{N-1} \sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y}) $$
 
 Where $\bar{x}$ and $\bar{y}$ are the means of the variables $x$ and $y$, respectively.
 

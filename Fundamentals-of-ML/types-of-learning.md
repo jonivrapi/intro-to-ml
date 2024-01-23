@@ -1,3 +1,8 @@
+---
+order: 98
+label: Types of Learning
+---
+
 # Types of Learning
 
 Yet another way to categorize machine learning systems is by how they generalize to data it has never seen before. Generalization is typically centered on approaches to learning, two of which are Instance based, and Model based learning.
