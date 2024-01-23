@@ -3,9 +3,9 @@ order: 99
 label: Types of ML
 ---
 
-# Supervised, Unsupervised, and Reinforcement Learning
+# Types of Machine Learning
 
-Machine Learning (ML) is a vast field with various techniques and approaches. One of the fundamental ways to categorize these approaches is by how an algorithm learns to become more accurate in its predictions. There are three primary types of ML: Supervised Learning, Unsupervised Learning, and Reinforcement Learning. Each type has its unique approach and application areas.
+Machine Learning (ML) is a vast field with various techniques and approaches. One of the fundamental ways to categorize these approaches is by how an algorithm learns to become more accurate in its predictions. There are four primary types of ML: Supervised Learning, Semisupervised Learning, Unsupervised Learning, and Reinforcement Learning. Each type has its unique approach and application areas.
 
 ## Supervised Learning
 
@@ -18,6 +18,22 @@ Supervised learning is the most common type of machine learning. In this approac
 -   **Examples**:
     -   **Regression**: Predicting continuous values (e.g., house prices).
     -   **Classification**: Categorizing data into predefined classes (e.g., spam detection in emails).
+-   **Algorithms**
+    -   k-Nearest Neighbors
+    -   Linear Regression
+    -   Logistic Regression
+    -   Support Vector Machines (SVMs)
+    -   Decision Trees and Random Forests
+    -   Neural Networks
+
+## Semisupervised Learning
+
+Semisupervised learning is supervised learning but over partially labelled data. Labeling data, in general, is very time-consuming, and you will frequently find yourself with many unlabeled datapoints and few labeled ones. Some algorithms are capable of dealing with this.
+
+Of these algorithms, most are combinations of unsupervised and supervised algorithms. Google Photos is a good example of this. You upload an entire album of photos, and it is able to recognize that Person A is in photos 1, 2, and 3, while Person B is in photos 3, 4, and 5. Once you tell it that Person A is Bob and Person B is Mary, it is able to automatically label all photos of both people.
+
+-   **Algorithms**
+    -   Deep Belief Networks (DBNs)
 
 ## Unsupervised Learning
 
@@ -30,6 +46,22 @@ Unsupervised learning deals with data that has no labels. The goal here is to ex
 -   **Examples**:
     -   **Clustering**: Grouping customers based on purchasing behavior.
     -   **Dimensionality Reduction**: Reducing the number of variables in a dataset while retaining its essential features.
+-   **Algorithms**
+    -   Clustering
+        -   K-Means
+        -   DBSCAN
+        -   Hierarchical Cluster Analysis (HCA)
+    -   Anomaly Detection and Novelty Detection
+        -   One-class SVM
+        -   Isolation Forest
+    -   Dimensionality Reduction and Visualization
+        -   Principal Component Analysis (PCA)
+        -   Kernel PCA
+        -   Locally Linear Embedding (LLE)
+        -   t-Distributed Stochastic Neighbor Embedding (t-SNE)
+    -   Association Rule Learning
+        -   Apriori
+        -   Eclat
 
 ## Reinforcement Learning
 
