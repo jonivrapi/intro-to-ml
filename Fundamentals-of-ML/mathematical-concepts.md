@@ -5,6 +5,12 @@ label: Math Concepts
 
 # A (not) exhaustive collection of the mathematical concepts related to ML
 
+### Notation
+A note on typical ML mathematical notation:
+
+- Lowercase bold face font is used to refer to vectors $\mathbf{x^{(i)}}$ where $\mathbf{x}$ is the vector of values at the $i$'th row.
+- Uppercase $\mathbf{X}$ is used to signify a matrix.
+
 ### Mean (Average)
 
 The mean is the sum of all values divided by the number of values.
@@ -130,3 +136,11 @@ $$
 $$
 
 Where $H(X)$ is the entropy of a random variable $X$ and $P(x_i)$ is the probability of each outcome.
+
+### Univariate Regression
+
+Univariate regression is a statistical technique used to model and analyze the relationship between a single independent variable $x$ and a dependent variable $y$. It aims to fit a linear model to the data, typically represented as $y = mx + b$, where $m$ is the slope and $b$ is the y-intercept. The goal is to find the best-fitting line through the data points that minimizes the differences (residuals) between the observed values and the values predicted by the model.
+
+### Multivariate Regression
+
+Multivariate regression is a statistical technique used to model the relationship between two or more independent variables $x₁, x₂, ..., xₙ$ and a dependent variable $y$. It aims to fit a linear model to the data, typically represented as $y = b₀ + b₁x₁ + b₂x₂ + ... + bₙxₙ$, where $b₀$ is the intercept and $b₁, b₂, ..., bₙ$ are the coefficients of the independent variables. The goal is to find the coefficients that best predict the dependent variable, minimizing the difference between the observed values and the model's predictions, often using methods like least squares.
