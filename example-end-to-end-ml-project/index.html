@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/intro-to-ml">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759558526990">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759969491083">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -33,12 +33,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=3.5.0.759558526990" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.5.0.759969491083" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.759558526990" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.759969491083" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.759558526990" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.5.0.759558526990" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.759969491083" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.5.0.759969491083" defer></script>
     <link href="../resources/css/katex.css?v=3.5.0" rel="stylesheet">
     <script id="katex-js" data-cfasync="false" src="../resources/js/katex.js?v=3.5.0" defer></script>
 </head>
@@ -178,14 +178,12 @@
 <p>In this article, we will work through a simple end-to-end ML project based on Chapter 2 of <em>Hands-On Machine learning with Scikit-Learn and TensorFlow</em> by Aurélien Géron to give you a taste for how this works in practice. It will closely follow the following structure:</p>
 <ol>
 <li>Frame the Problem</li>
-<li>Get data</li>
+<li>Choosing a Performance Measure</li>
 <li>Analyze the data to gain insights about the problem</li>
 <li>Preprocess the data for ML</li>
-<li>Choose a model(s) to test</li>
-<li>Train the model(s)</li>
-<li>Evaluate the model(s)</li>
-<li>Choose a model</li>
-<li>Tune the model&#x27;s hyperparameters</li>
+<li>Choose a model to test</li>
+<li>Train the model</li>
+<li>Evaluate the model</li>
 </ol>
 <doc-anchor-target id="california-housing-data">
     <h3>
@@ -194,6 +192,21 @@
     </h3>
 </doc-anchor-target>
 <p>While there are many toy datasets that you can play with to practice your ML skill set, it is always best to try and work with real data as this is more representative of what you will have to deal with in your day job. Data is never clean, always hard to find, and almost never complete. With that in mind, we will be using the California Housing Prices dataset which you can download here:</p>
+<p>
+<div class="mb-6 px-5 py-4 flex justify-between relative border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded transition-colors duration-150">
+    <div class="flex items-center text-blue-500 dark:text-blue-400">
+        <span class="inline-block mb-px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" role="presentation" fill="currentColor"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 14c-.55 0-1 .45-1 1v4c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-4c0-.55-.45-1-1-1z"/><path d="M11.29 15.71c.09.09.2.17.33.22.12.04.25.07.38.07s.26-.03.38-.08.23-.12.33-.22l5-5a.996.996 0 10-1.41-1.41l-3.3 3.3V3c0-.55-.45-1-1-1s-1 .45-1 1v9.59l-3.29-3.3A.996.996 0 106.3 10.7l4.99 5.01z"/></svg>
+        </span>
+        <span class="inline-block font-medium ml-2">housing.csv</span>
+    </div>
+    <div class="flex items-center text-xs text-gray-400 dark:text-dark-400">
+        <span>housing.csv</span>
+        <span class="inline-block ml-2">1.36MB</span>
+    </div>
+    <a href="datasets/housing.csv" class="absolute block inset-0" target="_blank" download="housing.csv"></a>
+</div>
+</p>
 <p>This dataset comes from <a href="https://www.kaggle.com/datasets/camnugent/california-housing-prices?resource=download">Kaggle</a> and has the following explanation:</p>
 <blockquote>
 <p><strong>Context</strong></p>
@@ -313,38 +326,96 @@ plt.show()</code></pre>
 </figure>
 </p>
 <p>You may notice here that many of your features are on different scales. This is also a problem that we will handle later on. Many models require that your input features be on the same scale lest they potentially may learn that one feature is more important than another, simply because its values are larger.</p>
-<doc-anchor-target id="splitting-your-data">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#splitting-your-data">#</doc-anchor-trigger>
-        <span>Splitting your data</span>
-    </h3>
-</doc-anchor-target>
-<p>When a model &quot;learns&quot;, what it is really learning are the proper values to assign to the parameters in its model. The model is essentially fitting a curve to your dataset. There is a caveat here in that not all models are fitting a curve, but these will be discussed later.</p>
-<p>With that being said, when training a model, it is important to ensure that you do not evaluate the performance of your model on the same data that was used to train it. Implicitly, when the model learn the values of the parameters required to fit your data, it is in a sense memorizing something about your data&#x27;s distribution. Therefore, it is necessary to split your data into training and testing sets. The training set to be used to train your model, and the testing set to be used to evaluate its performance.</p>
-<p>One way to split your data is as follows:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-python"><code v-pre class="language-python">from sklearn.model_selection import train_test_split
-
-X = df.drop(columns=['median_house_value'])
-y = df['median_house_value']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-print(f'X_train length: {len(X_train)} | X_test length: {len(X_test)}')</code></pre>
-</doc-codeblock></div>
-<p><figure class="content-center">
-    <img src="images/train-test-split.jpg" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Here we begin by defining our <span class="math">\mathbf{X}</span> set (our set of input features) and our <span class="math">y</span> set (our set of target values to be predicted). We then use <code v-pre>sklearn</code>&#x27;s built in <code v-pre>train_test_split</code> function to split our data into 80% training data, and 20% testing data. These values were arbitrarily chosen based on the small size of the dataset. If you had millions of samples, it may be perfectly reasonable to train on 99% of your data and test only on 1% of it.</p>
 <doc-anchor-target id="further-data-exploration">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#further-data-exploration">#</doc-anchor-trigger>
         <span>Further Data Exploration</span>
     </h3>
 </doc-anchor-target>
-<p>Now that you have split out your training and testing sets, you can do some more exploration of the data</p>
+<p>We did a basic exploration of the data earlier on this page, and will follow up with slightly more here. The purpose of this section is to keep this whole process as simple as possible to give you an idea for how you might approach things, but remember that there are a LOT of things you can do to explore your data to look for patterns.</p>
+<p>The following is an example of how to create a correlation matrix so you are able to see how correlated your features are. This only works with numerical features and for brevity&#x27;s sake, we excluded the categorical features. There are, however, many ways to handle categorical features will be discussed in a future section.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+numeric_data = df.select_dtypes(include=[np.number])
+correlation_matrix = numeric_data.corr()
+
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.show()</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/corr-matrix.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>In reading this chart, a value of <code v-pre>1</code> indicates a perfect correlation, a value of <code v-pre>0</code> indicates no correlation, and a value of <code v-pre>-1</code> indicates a perfect negative correlation. Reading this chart, we can see that there is a high correlation between <code v-pre>total_rooms</code> and <code v-pre>total_bedrooms</code> (which makes sense) as well as between <code v-pre>total_rooms</code> and <code v-pre>households</code> and <code v-pre>population</code>. Likewise, there is a high correlation between <code v-pre>households</code> and <code v-pre>population</code>. The rest of the numerical features seem to have insignificant correlations. Finally, we can also see that <code v-pre>median_income</code> is pretty highly correlated to <code v-pre>median_house_value</code> (which is our target). Now, what are you to do with this information?</p>
+<p>Well, highly correlated variables can help guide you in your feature selection process. You do not typically want to use many very highly correlated features together as they can reduce the performance of regression models due to multicollinearity. By dropping some of these features, you also may be able to improve a model&#x27;s predictive performance as well as its compute performance. When features are highly correlated with your target variable, however, this is an indication that they may hold good predictive power. Remember that this matrix is only showing <em>linear</em> correlations. It completely ignores non-linear relationships which are powerful as well.</p>
+<doc-anchor-target id="handling-missing-values">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#handling-missing-values">#</doc-anchor-trigger>
+        <span>Handling Missing Values</span>
+    </h3>
+</doc-anchor-target>
+<p>Next, in order to prep our data for the model, we should first handle any missing values. Let&#x27;s check if there are any first by reviewing the dataframe info output <doc-anchor-trigger to="#analyze-the-data">here</doc-anchor-trigger>. You will notice that <code v-pre>total_bedrooms</code> seems to have 217 rows with missing values. One way to handle this is to <em>impute</em> missing values. You can impute missing values in a whole host of different ways, the simplest of which are just to fill them with the mean or median of the values in the column. In thinking about the field <code v-pre>total_bedrooms</code>, would the median or the mean be the best solution for imputing missing values here? Considering the mean would likely be a floating point number, and that 3.25 bedrooms doesn&#x27;t make sense, the median is likely the better option here. Lets see what that looks like:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">from sklearn.impute import SimpleImputer
+
+imputer = SimpleImputer(strategy='median')
+imputer.fit(X_train)
+
+X_train_imputed = imputer.transform(X_train)
+X_test_imputed = imputer.transform(X_test) # for use later
+
+imputed_df = pd.DataFrame(X_train_imputed, columns=X_train.columns)
+
+imputed_df.sample(10)</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/after-imputing-median.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Here, we instantiate a <code v-pre>SimpleImputer</code> and give it a strategy. We then fit this imputer and use it to transform the training and testing dataframes to impute the missing values. Finally, as the result of the <code v-pre>transform</code> is a <code v-pre>numpy</code> array, we convert it back to a dataframe for easier viewing and manipulation. We can now sanity-check that we did, in fact, solve our nulls issue by rerunning the info command.</p>
+<blockquote>
+<p>Note: It is important to remember that you can only fit the scalars, or any kind of transformation, to the training set in order to prevent <em>data leakage</em>.</p>
+</blockquote>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">imputed_df.info()</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/after-imputation-df-info.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<doc-anchor-target id="training-a-model">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#training-a-model">#</doc-anchor-trigger>
+        <span>Training a Model</span>
+    </h1>
+</doc-anchor-target>
+<p>The first step in training a model is of course selecting the model. To keep things simple, here we will choose a simple <code v-pre>LinearRegression</code> model from <code v-pre>sklearn</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-python"><code v-pre class="language-python">from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+regressor = LinearRegression()
+regressor.fit(X_train_imputed, y_train)
+
+predictions = regressor.predict(X_test_imputed)
+
+mse = mean_squared_error(y_test, predictions)
+rmse = np.sqrt(mse)
+
+print(f&quot;This model's predictions are off by ${rmse:.2f}&quot;)</code></pre>
+</doc-codeblock></div>
+<p><figure class="content-center">
+    <img src="images/final-rmse.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>We fit the model to our training data, then made predictions on our test data, then evaluated those predictions with our chosen performance measure, and achieved a model which is off by about $71,000 per housing price prediction. This is obviously not good, but for our first end-to-end ML project, not bad!</p>
 
                                 
                                 <!-- Required only on API pages -->

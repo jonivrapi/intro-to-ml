@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/intro-to-ml">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759558526990">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759969491083">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.759558526990" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.759969491083" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759558526990" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759969491083" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759558526990" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759969491083" data-turbo-eval="false" defer></script>
     <link href="../../resources/css/katex.css?v=3.5.0" rel="stylesheet">
     <script id="katex-js" data-cfasync="false" src="../../resources/js/katex.js?v=3.5.0" defer></script>
 </head>
@@ -319,6 +319,60 @@
     </h3>
 </doc-anchor-target>
 <p>Multivariate regression is a statistical technique used to model the relationship between two or more independent variables <span class="math">x₁, x₂, ..., xₙ</span> and a dependent variable <span class="math">y</span>. It aims to fit a linear model to the data, typically represented as <span class="math">y = b₀ + b₁x₁ + b₂x₂ + ... + bₙxₙ</span>, where <span class="math">b₀</span> is the intercept and <span class="math">b₁, b₂, ..., bₙ</span> are the coefficients of the independent variables. The goal is to find the coefficients that best predict the dependent variable, minimizing the difference between the observed values and the model&#x27;s predictions, often using methods like least squares.</p>
+<doc-anchor-target id="multicollinearity">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multicollinearity">#</doc-anchor-trigger>
+        <span>Multicollinearity</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Multicollinearity</strong> is a statistical phenomenon in which two or more predictor variables in a multiple regression model are highly correlated, meaning that one predictor variable can be linearly predicted from the others with a substantial degree of accuracy. In a more rigorous context, multicollinearity refers to the situation where the design matrix <span class="math">X</span> in a regression model has some approximate or exact linear dependencies among its columns.</p>
+<p>Here&#x27;s a more formal definition:</p>
+<p>In the context of a multiple regression model, the model can be represented as:</p>
+<p><span class="math">Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_k X_k + \epsilon</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math">Y</span> is the dependent variable.</li>
+<li><span class="math">X_1, X_2, ..., X_k</span> are the independent (predictor) variables.</li>
+<li><span class="math">\beta_0, \beta_1, ..., \beta_k</span> are the coefficients of the model.</li>
+<li><span class="math">\epsilon</span> is the error term.</li>
+</ul>
+<p>Multicollinearity is present when:</p>
+<p><span class="math">X_j = \alpha_0 + \alpha_1 X_1 + ... + \alpha_{j-1} X_{j-1} + \alpha_{j+1} X_{j+1} + ... + \alpha_k X_k + \nu</span></p>
+<p>for some predictor variable <span class="math">X_j</span> (where <span class="math">j</span> is between 1 and <span class="math">k</span>), with a high degree of accuracy (i.e., the variance of <span class="math">\nu</span>, the error term, is small).</p>
+<p>In this situation, the matrix <span class="math">X^TX</span> (where <span class="math">X</span> is the design matrix of predictor variables) becomes close to singular (or actually singular in the case of perfect multicollinearity), meaning that its determinant is close to zero or exactly zero. This causes problems in estimating the coefficients <span class="math">\beta_i</span> using ordinary least squares (OLS) as the inverse of <span class="math">X^TX</span> (required in OLS estimation) does not exist or is poorly conditioned.</p>
+<p>Consequences of multicollinearity include:</p>
+<ol>
+<li>Inflated variances of the estimated coefficients, leading to wider confidence intervals and less reliable statistical tests.</li>
+<li>Difficulty in determining the individual effect of correlated predictors on the dependent variable.</li>
+<li>Unstable estimates of the coefficients, where small changes in the model or the data can lead to large changes in the coefficient estimates.</li>
+</ol>
+<p>Detecting multicollinearity typically involves looking at correlation matrices, variance inflation factors (VIF), or condition indices.</p>
+<doc-anchor-target id="variance">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#variance">#</doc-anchor-trigger>
+        <span>Variance</span>
+    </h3>
+</doc-anchor-target>
+<p><strong>Variance</strong> is a statistical measure that quantifies the spread or dispersion of a set of data points. It is used to represent how far each number in the dataset is from the mean and thus from every other number in the set. In more technical terms, variance measures the average squared deviations from the mean of the data points.</p>
+<p>Formally, the variance of a random variable <span class="math">X</span> is defined as the expected value of the squared deviation of <span class="math">X</span> from its mean <span class="math">\mu</span>, denoted as <span class="math">\text{Var}(X)</span> or <span class="math">\sigma^2</span>. Mathematically, it is expressed as:</p>
+<p><span class="math">\text{Var}(X) = E[(X - \mu)^2]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math">E</span> is the expected value operator.</li>
+<li><span class="math">X</span> is a random variable.</li>
+<li><span class="math">\mu</span> is the mean of <span class="math">X</span>.</li>
+</ul>
+<p>For a finite set of data points <span class="math">x_1, x_2, ..., x_n</span>, the sample variance is calculated as:</p>
+<p><span class="math">s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math">s^2</span> is the sample variance.</li>
+<li><span class="math">x_i</span> are the individual data points.</li>
+<li><span class="math">\bar{x}</span> is the sample mean.</li>
+<li><span class="math">n</span> is the number of data points.</li>
+</ul>
+<p>The factor <span class="math">n-1</span> in the denominator is used for an unbiased estimate of the variance in the case of a sample (this is known as Bessel&#x27;s correction). If the entire population is used, the denominator becomes <span class="math">n</span>.</p>
+<p>Variance is a foundational concept in statistics, providing a measure of the variability or spread in a set of data. A low variance indicates that the data points tend to be very close to the mean and hence to each other, while a high variance indicates that the data points are spread out over a wider range of values.</p>
 
                                 
                                 <!-- Required only on API pages -->
