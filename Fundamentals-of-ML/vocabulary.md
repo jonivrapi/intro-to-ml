@@ -163,3 +163,19 @@ $$
 ### Regularization
 
 **Regularization** is when you constrain a model to make it simpler in order to reduce the risk of overfitting to the dataset.
+
+### Correlation
+
+**Correlation** is a statistical measure that describes the extent to which two variables change together. If the correlation is high and positive, it means that when one variable increases, the other tends to increase as well. If it's high and negative, one variable increases as the other decreases. A correlation near zero suggests no strong relationship between the variables.
+
+### Multicollinearity
+
+**Multicollinearity** is a statistical phenomenon in which two or more predictor variables in a multiple regression model are highly correlated, meaning that one predictor variable can be linearly predicted from the others with a substantial degree of accuracy. In a more rigorous context, multicollinearity refers to the situation where the design matrix $X$ in a regression model has some approximate or exact linear dependencies among its columns.
+
+### Variance
+
+**Variance** is a statistical measure that quantifies the spread or dispersion of a set of data points. It is used to represent how far each number in the dataset is from the mean and thus from every other number in the set. In more technical terms, variance measures the average squared deviations from the mean of the data points.
+
+### Data Leakage
+
+**Data leakage** occurs when information from outside the training dataset is used to create the model. If you fit a scaler to the entire dataset (including the test set), you are essentially allowing the model to have prior knowledge about the distribution of the test set. This can lead to overly optimistic estimates of the model's performance

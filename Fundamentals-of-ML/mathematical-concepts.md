@@ -144,3 +144,62 @@ Univariate regression is a statistical technique used to model and analyze the r
 ### Multivariate Regression
 
 Multivariate regression is a statistical technique used to model the relationship between two or more independent variables $x₁, x₂, ..., xₙ$ and a dependent variable $y$. It aims to fit a linear model to the data, typically represented as $y = b₀ + b₁x₁ + b₂x₂ + ... + bₙxₙ$, where $b₀$ is the intercept and $b₁, b₂, ..., bₙ$ are the coefficients of the independent variables. The goal is to find the coefficients that best predict the dependent variable, minimizing the difference between the observed values and the model's predictions, often using methods like least squares.
+
+### Multicollinearity
+
+**Multicollinearity** is a statistical phenomenon in which two or more predictor variables in a multiple regression model are highly correlated, meaning that one predictor variable can be linearly predicted from the others with a substantial degree of accuracy. In a more rigorous context, multicollinearity refers to the situation where the design matrix $X$ in a regression model has some approximate or exact linear dependencies among its columns.
+
+Here's a more formal definition:
+
+In the context of a multiple regression model, the model can be represented as:
+
+$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_k X_k + \epsilon $
+
+where:
+- $ Y $ is the dependent variable.
+- $ X_1, X_2, ..., X_k $ are the independent (predictor) variables.
+- $ \beta_0, \beta_1, ..., \beta_k $ are the coefficients of the model.
+- $ \epsilon $ is the error term.
+
+Multicollinearity is present when:
+
+$ X_j = \alpha_0 + \alpha_1 X_1 + ... + \alpha_{j-1} X_{j-1} + \alpha_{j+1} X_{j+1} + ... + \alpha_k X_k + \nu $
+
+for some predictor variable $ X_j $ (where $ j $ is between 1 and $ k $), with a high degree of accuracy (i.e., the variance of $ \nu $, the error term, is small).
+
+In this situation, the matrix $ X^TX $ (where $ X $ is the design matrix of predictor variables) becomes close to singular (or actually singular in the case of perfect multicollinearity), meaning that its determinant is close to zero or exactly zero. This causes problems in estimating the coefficients $ \beta_i $ using ordinary least squares (OLS) as the inverse of $ X^TX $ (required in OLS estimation) does not exist or is poorly conditioned.
+
+Consequences of multicollinearity include:
+
+1. Inflated variances of the estimated coefficients, leading to wider confidence intervals and less reliable statistical tests.
+2. Difficulty in determining the individual effect of correlated predictors on the dependent variable.
+3. Unstable estimates of the coefficients, where small changes in the model or the data can lead to large changes in the coefficient estimates.
+
+Detecting multicollinearity typically involves looking at correlation matrices, variance inflation factors (VIF), or condition indices.
+
+### Variance
+
+**Variance** is a statistical measure that quantifies the spread or dispersion of a set of data points. It is used to represent how far each number in the dataset is from the mean and thus from every other number in the set. In more technical terms, variance measures the average squared deviations from the mean of the data points.
+
+Formally, the variance of a random variable $X$ is defined as the expected value of the squared deviation of $X$ from its mean $\mu$, denoted as $\text{Var}(X)$ or $\sigma^2$. Mathematically, it is expressed as:
+
+$ \text{Var}(X) = E[(X - \mu)^2] $
+
+where:
+- $E$ is the expected value operator.
+- $X$ is a random variable.
+- $\mu$ is the mean of $X$.
+
+For a finite set of data points $x_1, x_2, ..., x_n$, the sample variance is calculated as:
+
+$ s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2 $
+
+where:
+- $s^2$ is the sample variance.
+- $x_i$ are the individual data points.
+- $\bar{x}$ is the sample mean.
+- $n$ is the number of data points.
+
+The factor $n-1$ in the denominator is used for an unbiased estimate of the variance in the case of a sample (this is known as Bessel's correction). If the entire population is used, the denominator becomes $n$.
+
+Variance is a foundational concept in statistics, providing a measure of the variability or spread in a set of data. A low variance indicates that the data points tend to be very close to the mean and hence to each other, while a high variance indicates that the data points are spread out over a wider range of values.

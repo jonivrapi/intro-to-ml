@@ -3,19 +3,19 @@
 In this article, we will work through a simple end-to-end ML project based on Chapter 2 of *Hands-On Machine learning with Scikit-Learn and TensorFlow* by Aurélien Géron to give you a taste for how this works in practice. It will closely follow the following structure:
 
 1. Frame the Problem
-2. Get data
+2. Choosing a Performance Measure
 3. Analyze the data to gain insights about the problem
 4. Preprocess the data for ML
-5. Choose a model(s) to test
-6. Train the model(s)
-7. Evaluate the model(s)
-8. Choose a model
-9. Tune the model's hyperparameters
+5. Choose a model to test
+6. Train the model
+7. Evaluate the model
 
 
 ### California Housing Data
 
 While there are many toy datasets that you can play with to practice your ML skill set, it is always best to try and work with real data as this is more representative of what you will have to deal with in your day job. Data is never clean, always hard to find, and almost never complete. With that in mind, we will be using the California Housing Prices dataset which you can download here:
+
+[!file housing.csv](./datasets/housing.csv)
 
 This dataset comes from [Kaggle](https://www.kaggle.com/datasets/camnugent/california-housing-prices?resource=download) and has the following explanation:
 
@@ -125,28 +125,78 @@ plt.show()
 
 You may notice here that many of your features are on different scales. This is also a problem that we will handle later on. Many models require that your input features be on the same scale lest they potentially may learn that one feature is more important than another, simply because its values are larger.
 
-### Splitting your data
-
-When a model "learns", what it is really learning are the proper values to assign to the parameters in its model. The model is essentially fitting a curve to your dataset. There is a caveat here in that not all models are fitting a curve, but these will be discussed later.
-
-With that being said, when training a model, it is important to ensure that you do not evaluate the performance of your model on the same data that was used to train it. Implicitly, when the model learn the values of the parameters required to fit your data, it is in a sense memorizing something about your data's distribution. Therefore, it is necessary to split your data into training and testing sets. The training set to be used to train your model, and the testing set to be used to evaluate its performance. 
-
-One way to split your data is as follows:
-
-```python
-from sklearn.model_selection import train_test_split
-
-X = df.drop(columns=['median_house_value'])
-y = df['median_house_value']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-print(f'X_train length: {len(X_train)} | X_test length: {len(X_test)}')
-```
-![](./images/train-test-split.jpg)
-
-Here we begin by defining our $\mathbf{X}$ set (our set of input features) and our $y$ set (our set of target values to be predicted). We then use `sklearn`'s built in `train_test_split` function to split our data into 80% training data, and 20% testing data. These values were arbitrarily chosen based on the small size of the dataset. If you had millions of samples, it may be perfectly reasonable to train on 99% of your data and test only on 1% of it.
-
 ### Further Data Exploration
 
-Now that you have split out your training and testing sets, you can do some more exploration of the data
+We did a basic exploration of the data earlier on this page, and will follow up with slightly more here. The purpose of this section is to keep this whole process as simple as possible to give you an idea for how you might approach things, but remember that there are a LOT of things you can do to explore your data to look for patterns.
+
+The following is an example of how to create a correlation matrix so you are able to see how correlated your features are. This only works with numerical features and for brevity's sake, we excluded the categorical features. There are, however, many ways to handle categorical features will be discussed in a future section.
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+numeric_data = df.select_dtypes(include=[np.number])
+correlation_matrix = numeric_data.corr()
+
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.show()
+```
+![](./images/corr-matrix.jpg)
+
+In reading this chart, a value of `1` indicates a perfect correlation, a value of `0` indicates no correlation, and a value of `-1` indicates a perfect negative correlation. Reading this chart, we can see that there is a high correlation between `total_rooms` and `total_bedrooms` (which makes sense) as well as between `total_rooms` and `households` and `population`. Likewise, there is a high correlation between `households` and `population`. The rest of the numerical features seem to have insignificant correlations. Finally, we can also see that `median_income` is pretty highly correlated to `median_house_value` (which is our target). Now, what are you to do with this information?
+
+Well, highly correlated variables can help guide you in your feature selection process. You do not typically want to use many very highly correlated features together as they can reduce the performance of regression models due to multicollinearity. By dropping some of these features, you also may be able to improve a model's predictive performance as well as its compute performance. When features are highly correlated with your target variable, however, this is an indication that they may hold good predictive power. Remember that this matrix is only showing *linear* correlations. It completely ignores non-linear relationships which are powerful as well.
+
+
+
+### Handling Missing Values
+
+Next, in order to prep our data for the model, we should first handle any missing values. Let's check if there are any first by reviewing the dataframe info output [here](#analyze-the-data). You will notice that `total_bedrooms` seems to have 217 rows with missing values. One way to handle this is to *impute* missing values. You can impute missing values in a whole host of different ways, the simplest of which are just to fill them with the mean or median of the values in the column. In thinking about the field `total_bedrooms`, would the median or the mean be the best solution for imputing missing values here? Considering the mean would likely be a floating point number, and that 3.25 bedrooms doesn't make sense, the median is likely the better option here. Lets see what that looks like:
+
+```python
+from sklearn.impute import SimpleImputer
+
+imputer = SimpleImputer(strategy='median')
+imputer.fit(X_train)
+
+X_train_imputed = imputer.transform(X_train)
+X_test_imputed = imputer.transform(X_test) # for use later
+
+imputed_df = pd.DataFrame(X_train_imputed, columns=X_train.columns)
+
+imputed_df.sample(10)
+```
+![](./images/after-imputing-median.jpg)
+
+Here, we instantiate a `SimpleImputer` and give it a strategy. We then fit this imputer and use it to transform the training and testing dataframes to impute the missing values. Finally, as the result of the `transform` is a `numpy` array, we convert it back to a dataframe for easier viewing and manipulation. We can now sanity-check that we did, in fact, solve our nulls issue by rerunning the info command.
+
+> Note: It is important to remember that you can only fit the scalars, or any kind of transformation, to the training set in order to prevent *data leakage*.
+
+```python
+imputed_df.info()
+```
+![](./images/after-imputation-df-info.jpg)
+
+
+# Training a Model
+
+The first step in training a model is of course selecting the model. To keep things simple, here we will choose a simple `LinearRegression` model from `sklearn`.
+
+```python
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+regressor = LinearRegression()
+regressor.fit(X_train_imputed, y_train)
+
+predictions = regressor.predict(X_test_imputed)
+
+mse = mean_squared_error(y_test, predictions)
+rmse = np.sqrt(mse)
+
+print(f"This model's predictions are off by ${rmse:.2f}")
+```
+![](./images/final-rmse.jpg)
+
+We fit the model to our training data, then made predictions on our test data, then evaluated those predictions with our chosen performance measure, and achieved a model which is off by about $71,000 per housing price prediction. This is obviously not good, but for our first end-to-end ML project, not bad!
