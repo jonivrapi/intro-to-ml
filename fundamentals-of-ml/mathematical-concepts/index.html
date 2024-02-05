@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/intro-to-ml">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760479677289">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760479916264">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -22,20 +22,22 @@
     <meta property="og:url" content="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-ml/mathematical-concepts/">
     <meta property="og:title" content="A (not) exhaustive collection of the mathematical concepts related to ML">
     <meta property="og:description" content="A note on typical ML mathematical notation:">
+    <meta property="og:image" content="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-ml/images/convex-concave-functions.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-ml/mathematical-concepts/">
     <meta property="twitter:title" content="A (not) exhaustive collection of the mathematical concepts related to ML">
     <meta property="twitter:description" content="A note on typical ML mathematical notation:">
+    <meta property="twitter:image" content="https://jonivrapi.github.io/intro-to-ml/fundamentals-of-ml/images/convex-concave-functions.jpg">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.760479677289" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.760479916264" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760479677289" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760479916264" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760479677289" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760479916264" data-turbo-eval="false" defer></script>
     <link href="../../resources/css/katex.css?v=3.5.0" rel="stylesheet">
     <script id="katex-js" data-cfasync="false" src="../../resources/js/katex.js?v=3.5.0" defer></script>
 </head>
@@ -391,6 +393,11 @@
 <p>A function is concave on an interval if the line segment between any two points on the graph of the function lies below or on the graph. Formally, a function <span class="math">f: I \rightarrow \mathbb{R}</span> is concave if, for any two points <span class="math">x_1, x_2 \in I</span> and any <span class="math">\lambda</span> such that <span class="math">0 \leq \lambda \leq 1</span>, the following inequality holds:</p>
 <div class="math"><pre>    f(\lambda x_1 + (1 - \lambda) x_2) \geq \lambda f(x_1) + (1 - \lambda) f(x_2)</pre></div>
 <p>This means that the function curves upwards, or has a downward-facing curvature. Examples include <span class="math">f(x) = \log(x)</span> or <span class="math">f(x) = -x^2</span>. A twice-differentiable function is concave on an interval if its second derivative is non-positive throughout that interval.</p>
+<p><figure class="content-center">
+    <img src="../images/convex-concave-functions.jpg" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 
                                 
                                 <!-- Required only on API pages -->
