@@ -153,7 +153,9 @@ Here's a more formal definition:
 
 In the context of a multiple regression model, the model can be represented as:
 
-$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_k X_k + \epsilon $
+$$
+    Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_k X_k + \epsilon
+$$
 
 where:
 - $ Y $ is the dependent variable.
@@ -163,7 +165,9 @@ where:
 
 Multicollinearity is present when:
 
-$ X_j = \alpha_0 + \alpha_1 X_1 + ... + \alpha_{j-1} X_{j-1} + \alpha_{j+1} X_{j+1} + ... + \alpha_k X_k + \nu $
+$$
+    X_j = \alpha_0 + \alpha_1 X_1 + ... + \alpha_{j-1} X_{j-1} + \alpha_{j+1} X_{j+1} + ... + \alpha_k X_k + \nu
+$$
 
 for some predictor variable $ X_j $ (where $ j $ is between 1 and $ k $), with a high degree of accuracy (i.e., the variance of $ \nu $, the error term, is small).
 
@@ -183,7 +187,9 @@ Detecting multicollinearity typically involves looking at correlation matrices, 
 
 Formally, the variance of a random variable $X$ is defined as the expected value of the squared deviation of $X$ from its mean $\mu$, denoted as $\text{Var}(X)$ or $\sigma^2$. Mathematically, it is expressed as:
 
-$ \text{Var}(X) = E[(X - \mu)^2] $
+$$
+    \text{Var}(X) = E[(X - \mu)^2]
+$$
 
 where:
 - $E$ is the expected value operator.
@@ -192,7 +198,9 @@ where:
 
 For a finite set of data points $x_1, x_2, ..., x_n$, the sample variance is calculated as:
 
-$ s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2 $
+$$
+    s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+$$
 
 where:
 - $s^2$ is the sample variance.
@@ -203,3 +211,21 @@ where:
 The factor $n-1$ in the denominator is used for an unbiased estimate of the variance in the case of a sample (this is known as Bessel's correction). If the entire population is used, the denominator becomes $n$.
 
 Variance is a foundational concept in statistics, providing a measure of the variability or spread in a set of data. A low variance indicates that the data points tend to be very close to the mean and hence to each other, while a high variance indicates that the data points are spread out over a wider range of values.
+
+### Convex Functions
+A function $f(x)$ is called convex on an interval if the line segment between any two points on the graph of the function lies above or on the graph. Formally, a function $f: I \rightarrow \mathbb{R}$ (where $I$ is an interval) is convex if, for any two points $x_1, x_2 \in I$ and any $\lambda$ such that $0 \leq \lambda \leq 1$, the following inequality holds:
+
+$$
+    f(\lambda x_1 + (1 - \lambda) x_2) \leq \lambda f(x_1) + (1 - \lambda) f(x_2)
+$$
+
+In simpler terms, this means that the function curves downwards, or has an upward-facing curvature. Examples include the function $f(x) = x^2$ or $f(x) = e^x$. A twice-differentiable function is convex on an interval if its second derivative is non-negative throughout that interval.
+
+### Concave Functions
+A function is concave on an interval if the line segment between any two points on the graph of the function lies below or on the graph. Formally, a function $f: I \rightarrow \mathbb{R}$ is concave if, for any two points $x_1, x_2 \in I$ and any $\lambda$ such that $0 \leq \lambda \leq 1$, the following inequality holds:
+
+$$
+    f(\lambda x_1 + (1 - \lambda) x_2) \geq \lambda f(x_1) + (1 - \lambda) f(x_2)
+$$
+
+This means that the function curves upwards, or has a downward-facing curvature. Examples include $f(x) = \log(x)$ or $f(x) = -x^2$. A twice-differentiable function is concave on an interval if its second derivative is non-positive throughout that interval.
