@@ -229,3 +229,5 @@ $$
 $$
 
 This means that the function curves upwards, or has a downward-facing curvature. Examples include $f(x) = \log(x)$ or $f(x) = -x^2$. A twice-differentiable function is concave on an interval if its second derivative is non-positive throughout that interval.
+
+![](./images/convex-concave-functions.jpg)
